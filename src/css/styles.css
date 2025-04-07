@@ -1,83 +1,222 @@
-:root{
-    --cor-cinsa: #b2babb;
-    --cor-black-fundo: #121212;
-    --cor-purple: #b24cfc;
-}
-
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-body{
-    background-color: var(--cor-cinsa);
-}
-
-#corpo{
-    background-color: white;
-}
-
-header{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    background-color: var(--cor-black-fundo);
-    border-bottom: 15px solid var(--cor-purple);
-    text-align: center;
-    color: white;
-}
-
-header h1{
-    margin-left: 40px;
-}
-
-#menu ul{
-    list-style-type: none;
-    margin-left: 200px;
-}
-
-#menu li{
-    display: inline-block;
-    padding: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.3em;
-    text-align: center;
-    line-height: 1em;
-}
-
-#menu li:hover{
-    color: var(--cor-purple);
-}
-
-#menu .sub-list{
-    display: none; 
-    list-style: none; 
-    padding: 0;
-    margin: 0; 
-    position: absolute; 
-    background-color: #f9f9f9; 
-    border: 1px solid #d4d4d4; 
-    min-width: 150px; 
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
-    z-index: 1; 
-}
-
-#menu .sub-list li {
-    display: block;
-    padding: 10px 15px; 
-    text-decoration: none; 
-    color: #333; 
+/* Estilo Dark RPG inspirado na Tripo Games */
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background: linear-gradient(#0d0615, #1a0f2e);
+    color: #e0d6f5;
   }
   
-  #menu .sub-list li:hover {
-    background-color: #ddd; 
-    color: var(--cor-purple);
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: #1a0f2e;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-
-section#historia{
-    background-color: var(--cor-cinsa);
-}
-
+  
+  .logo {
+    font-size: 1.4rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #ff9472;
+  }
+  
+  nav a {
+    margin-left: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.75rem;
+    font-family: 'Press Start 2P', cursive;
+    color: #e0d6f5;
+    position: relative;
+  }
+  
+  nav a:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background: #ff9472;
+    border-radius: 3px;
+  }
+  
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 3rem;
+    background-image: url("../image/image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 400px;
+    color: white;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+  }
+  
+  .hero-text {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-text h1 {
+    font-size: 2rem;
+    color: #fff;
+  }
+  
+  .hero-text p {
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+  
+  .hero-img img,
+  .hero-img video {
+    max-width: 400px;
+    border-radius: 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    margin-left: 2rem;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    padding: 4rem 3rem;
+    background-color: #1f132e;
+  }
+  
+  .card {
+    background: #2b1a3a;
+    border-radius: 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    text-align: center;
+    color: #e0d6f5;
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    background: #3a204e;
+  }
+  
+  .card h3 {
+    font-size: 0.85rem;
+    color: #ffb692;
+  }
+  
+  footer {
+    background: #ff6f4e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+  }
+  
+  .submenu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem 3rem;
+    background-color: #1a0f2e;
+  }
+  
+  .submenu-button {
+    background-color: #2f1b44;
+    border: 2px solid #7c2e7c;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-align: center;
+    color: #e0d6f5;
+    transition: transform 0.2s ease;
+  }
+  
+  .submenu-button:hover {
+    transform: scale(1.05);
+    background-color: #3d255b;
+  }
+  
+  .content-section {
+    background: #221530;
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    margin: 2rem auto;
+    width: 85%;
+    max-width: 1100px;
+    box-shadow: 0 0 0 8px #4b145b, 0 0 25px 8px #7c2e7c;
+    font-family: 'Press Start 2P', cursive;
+    color: #f0e6ff;
+    line-height: 2;
+    border: 4px solid #7c2e7c;
+    position: relative;
+  }
+  
+  .content-section::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    background: linear-gradient(45deg, #4b145b, #7c2e7c, #ff9472);
+    z-index: -1;
+    filter: blur(10px);
+    border-radius: 24px;
+  }
+  
+  .content-section h2 {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #ffb692;
+    text-align: center;
+    text-shadow: 2px 2px 0 #4b145b;
+  }
+  
+  .content-section p {
+    font-size: 0.7rem;
+    white-space: pre-wrap;
+    text-align: justify;
+    color: #7b57b3 ;
+  }
+  
+  @media (max-width: 768px) {
+    .content-section {
+      padding: 2rem;
+      width: 95%;
+    }
+  
+    .content-section h2 {
+      font-size: 0.9rem;
+    }
+  
+    .content-section p {
+      font-size: 0.6rem;
+    }
+  
+    nav a {
+      font-size: 0.6rem;
+    }
+  }
+  

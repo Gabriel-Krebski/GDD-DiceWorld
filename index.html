@@ -1,72 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="src/css/styles.css">
-    <title>Dice WORLD</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice World</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
-    <div id="corpo">
-        <header id="cabecalho">
-            <h1>DICE WORLD</h1>
-            <nav id="menu">
-                <ul>
-                    <li id="aboutGame">SOBRE O JOGO
-                        <ul class="sub-list" id="subMenuAboutGame">
-                            <li class="item-menu">introdução</li>
-                            <li class="item-menu">historia</li>
-                            <li class="item-menu">gameplay</li>
-                            <li class="item-menu">objetivo</li>                    
-                            <li class="item-menu">controles</li>
-                            <li class="item-menu">camera</li>
-                            <li class="item-menu">universo</li>
-                        </ul>
-                    </li>
-                    
-                    <li id="personagem" class="item-menu">personagens
-                        <ul class="sub-list" id="subMenuPersonagem">
-                            <li>campeões</li>
-                            <li class="item-menu">inimigos</li>
-                        </ul>
-                    </li>
+  <header>
+    <div class="logo">Dice World</div>
+    <nav>
+      <a href="#inicio" onclick="mostrarSubmenu('inicio')">Início</a>
+      <a href="#sobre" onclick="mostrarSubmenu('sobre')">Sobre o Jogo</a>
+      <a href="#personagens" onclick="mostrarSubmenu('personagens')">Personagens</a>
+      <a href="#desenvolvimento" onclick="mostrarSubmenu('desenvolvimento')">Desenvolvimento</a>
+    </nav>
+  </header>
 
-                    <li id="desevolvimento" class="item-menu">desevolvimento game
-                        <ul class="sub-list" id="subMenuDesevolvimento">
-                            <li class="item-menu">atribuições</li>
-                            <li class="item-menu">conograma</li>                           
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="introducao">
-        </section>
-        <section id="historia">
-            <h1 class="titulo-section">HISTORIA</h1>
-                <img src="src/image/pergaminho-historia.png">
-        </section>
-        <section id="gameplay">
-        </section>
-        <section id="objetivo">
-        </section>
-        <section id="personagem">
-        </section>
-        <section id="inimigos">
-        </section>
-        <section id="controles">
-        </section>
-        <section id="camera">
-        </section>
-        <section id="universo">
-        </section>
-        <section id="cronograma">
-        </section>
-        <section id="atibuições">
-        </section>
-        <script src="src/js/script.js"></script>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>DiceWorld</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
     </div>
+    <div class="hero-img">
+        <video autoplay loop muted playsinline>
+            <source src="src/videos/gameplay_teste.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+          </video>
+    </div>
+  </section>
+
+  <!-- Submenus -->
+  <section class="card-grid submenu" id="submenu-inicio">
+    <div class="card" onclick="mostrarConteudo('Introdução')"><h3>Introdução</h3></div>
+    <div class="card" onclick="mostrarConteudo('História')"><h3>História</h3></div>
+    <div class="card" onclick="mostrarConteudo('Objetivos')"><h3>Objetivos</h3></div>
+    <div class="card" onclick="mostrarConteudo('Universo')"><h3>Universo</h3></div>
+  </section>
+
+  <section class="card-grid submenu" id="submenu-sobre" style="display: none;">
+    <div class="card" onclick="mostrarConteudo('Gameplay')"><h3>Gameplay</h3></div>
+    <div class="card" onclick="mostrarConteudo('Controles')"><h3>Controles</h3></div>
+    <div class="card" onclick="mostrarConteudo('Câmera')"><h3>Câmera</h3></div>
+  </section>
+
+  <section class="card-grid submenu" id="submenu-personagens" style="display: none;">
+    <div class="card" onclick="mostrarConteudo('Campeões')"><h3>Campeões</h3></div>
+    <div class="card" onclick="mostrarConteudo('Inimigos')"><h3>Inimigos</h3></div>
+  </section>
+
+  <section class="card-grid submenu" id="submenu-desenvolvimento" style="display: none;">
+    <div class="card" onclick="mostrarConteudo('Atribuições')"><h3>Atribuições</h3></div>
+    <div class="card" onclick="mostrarConteudo('Cronograma')"><h3>Cronograma</h3></div>
+  </section>
+
+  <!-- Conteúdo dinâmico do submenu -->
+  <section class="content-section" id="conteudo-submenu" style="display: none; padding: 2rem 3rem; background-color: #2d172d;">
+    <h2 id="titulo-conteudo"></h2>
+    <p id="texto-conteudo"></p>
+  </section>
+
+  <script>
+    const textos = {
+      "Introdução": "Dice World é um jogo de RPG em pixel art ambientado no reino mágico de Altaris. Após o roubo dos Dados da Harmonia por Dardarios, o mundo mergulhou no caos. Cabe aos heróis restaurar a ordem.",
+      "História": "Altaris vivia em paz graças aos Dados da Harmonia, artefatos mágicos que mantinham o equilíbrio do reino. Mas tudo mudou quando Dardarios, um arquivista obcecado pela liberdade do destino, roubou os dados e espalhou o caos. Agora, heróis devem encontrar os fragmentos perdidos dos Dados para restaurar a ordem.",
+      "Objetivos": "Coletar todos os fragmentos dos Dados da Harmonia, enfrentar monstros corrompidos, derrotar Dardarios e restaurar o equilíbrio de Altaris.",
+      "Universo": "Altaris é um reino de fantasia povoado por humanos, criaturas místicas e monstros. As regiões variam de florestas encantadas a ruínas antigas. A ausência dos Dados distorceu a magia e desestabilizou a realidade.",
+
+      "Gameplay": "Jogo de plataforma com combate em tempo real, exploração lateral e progressão automática de personagens. Os jogadores assumem o papel de três heróis distintos com habilidades únicas.",
+      "Controles": "O jogo utiliza controles clássicos de plataforma: movimentação lateral, pulo e ataque. Comandos simples e precisos permitem ao jogador controlar os personagens com fluidez durante combates e saltos desafiadores.",
+      "Câmera": "A câmera do jogo é 2D com rolagem lateral. Ela segue o personagem em tempo real e se ajusta suavemente durante ações rápidas e combates, mantendo sempre o foco no centro da ação.",
+
+      "Campeões": `
+        Kaelen, o Escudo Leal:\nKaelen serviu o Rei Alaric por anos, sua lealdade inabalável como o aço de sua espada...\n\nElara, a Teórica Arcana:\nElara sempre preferiu o silêncio de sua torre aos salões da corte. Fascinada pelos mistérios do Arcano...\n\nZephyr, a Sombra Oportunista:\nZephyr sempre navegou pelas sombras de Altaris, sua lealdade a ninguém além de sua própria bolsa de moedas...`,
+
+      "Inimigos": `
+        Dardarios, o Arquivista da Discórdia:\nDardarios foi um estudioso dos Dados da Harmonia, mas sua obsessão com o livre arbítrio o levou à loucura...\n\nServos do Caos:\nEsqueletos reanimados, goblins oportunistas e fantasmas libertos dos Dados se uniram a Dardarios, formando um exército que ameaça tudo em Altaris.`,
+
+      "Atribuições": "Design geral, programação, conteúdo de narrativa.",
+      "Cronograma": "Fase 1: Design (jan-fev), Fase 2: Programação (mar-abr), Fase 3: Arte e animação (mai-jun), Fase 4: Testes e polimento (jul)."
+    };
+
+    function mostrarSubmenu(menu) {
+      const submenus = document.querySelectorAll('.submenu');
+      submenus.forEach(sub => sub.style.display = 'none');
+      document.getElementById(`submenu-${menu}`).style.display = 'grid';
+      document.getElementById("conteudo-submenu").style.display = "none";
+    }
+
+    function mostrarConteudo(titulo) {
+    const tituloElemento = document.getElementById("titulo-conteudo");
+    const textoElemento = document.getElementById("texto-conteudo");
+    const imagemElemento = document.getElementById("imagem-exibida");
+    const containerImagem = document.getElementById("imagem-conteudo");
+
+    tituloElemento.textContent = titulo;
+    document.getElementById("conteudo-submenu").style.display = "block";
+
+    if (titulo === "História") {
+        textoElemento.style.display = "none"; // Oculta o texto
+        imagemElemento.src = "src/image/altaris_historia.png"; // Altere para o caminho correto da imagem
+        imagemElemento.alt = "Imagem da história de Altaris";
+        containerImagem.style.display = "block"; // Exibe a imagem
+    } else {
+        textoElemento.style.display = "block"; // Exibe o texto normalmente
+        textoElemento.textContent = textos[titulo] || "Conteúdo em construção...";
+        containerImagem.style.display = "none"; // Oculta a imagem para os outros tópicos
+    }
+}
+  </script>
 </body>
 </html>
